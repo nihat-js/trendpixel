@@ -4,11 +4,13 @@ import dnaSVG from "../../assets/dna.svg"
 import facebookSvg from '../../assets/facebook.svg'
 import twitterSvg from '../../assets/twitter.svg'
 import './index.scss'
+
+
+
 export function AuthPage() {
   return (
     <main className='auth-page'>
-
-      <div>
+      <div  style={{width : '600px'}} className='grid' >
         <div className="left">
           <div className="brand">
             <div className="name"> TrendPixel </div>

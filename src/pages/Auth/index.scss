@@ -1,0 +1,14 @@
+.auth-page {
+  .dna-img {
+    border-radius: 50%;
+    width: 100px;
+    animation: dnaAnimation 1.5s infinite alternate
+  }
+}
+
+@keyframes dnaAnimation {
+
+  100% {
+    transform: rotate(160deg);
+  }
+}

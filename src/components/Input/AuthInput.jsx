@@ -1,25 +1,18 @@
 import { useState } from "react"
 
-export function AuthInput({ placeholder }) {
+export function AuthInput({ placeholder, name, onChange, type = "text" }) {
 
-  const [isInputFocused, setIsInputFocused] = useState(false);
+  // const [isInputFocused, setIsInputFocused] = useState(false);
 
-  return <div style={{
-    position : 'relative',
-    
-  }}  className="auth-input-group">
-    <p style={{
-      position : 'absolute',
-      left : '10px',
-      top : 0,
-      transform : 'translaateY(-50%)',
-      display : isInputFocused ? 'block' : 'none',
-      background : 'white',
-      zIndex : 10,
-    }} > {placeholder} </p>
-    <input onBlur={() => setIsInputFocused(false)}
-      onFocus={() => setIsInputFocused(true)}
-      style={{ padding: '15px 20px', border: '1px solid #d3de05', '&:active': { border: '1px solid green' } }} type="text" placeholder={!isInputFocused && placeholder} />
+  return <div
+    className="auth-input-group mb-2 bg-white  my-4">
+    <p className="mb-2 text-gray-500"> {placeholder} </p>
+    <input name={name}
+      className="w-full px-4 py-2 transition duration-300 border border-gray-300 rounded focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-20 "
+      onChange={onChange}
+      // onBlur={() => setIsInputFocused(false)}
+      // onFocus={() => setIsInputFocused(true)}
+      type={type} />
   </div>
 }
 

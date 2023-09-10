@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { client } from '../../consts'
-import { AddPost } from '../../components/Post/Add'
+import { PostBox } from '../../components/Post/Box'
 import Nav from '../../components/Nav/index'
 export function UserPage() {
 
@@ -25,7 +25,7 @@ export function UserPage() {
       <div className="container">
         Now current user is {username}
         {
-          posts.map((el, index) => <OnePost key={index} {...el} />
+          posts.map((el, index) => <PostBox key={index} {...el} />
           )
         }
 

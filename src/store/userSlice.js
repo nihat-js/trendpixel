@@ -14,7 +14,6 @@ const userSlice = createSlice({
       let { username, token } = action.payload
       localStorage.setItem('token', token)
       localStorage.setItem('username', username)
-      console.log(state.username)
       return  { ...action.payload }
     },
     logout: (state, action) => {

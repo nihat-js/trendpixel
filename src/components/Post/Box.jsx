@@ -1,24 +1,30 @@
 import React, { useState } from 'react'
+import { LikeButton } from '../Button/Like'
+import { useSelector, useDispatch } from 'react-redux'
+import AddComment from '../Comment/Add'
+export function PostBox({ postId, authorUsername, imageUrl, caption, comments, likes, timestamp, status }) {
 
-export function PostBox({ imageUrl, caption, status }) {
-  console.log('c', imageUrl)
+  const user = useSelector(state => state.user)
 
-  const [isLiked, setLiked] = useState(false)
+  const [likesCount,setLikesCount] = useState(likes.length)
+  const [commentsCount,setCommentsCount] = useState(comments.length)
 
-
-
-  const unlikeBtn = (
-    <button class="bg-pink-500 hover:bg-gray-200 text-white hover:text-gray-600 font-bold py-2 px-4 rounded-full inline-flex items-center">
-      <span>Liked</span>
-      <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-    </button>)
+  let date = new Date(timestamp)
+  let isLiked = likes.findIndex((el) => el.authorUsername == user.username) > -1
 
 
   return (
     <div className='bg-slate-100 py-5 px-3 rounded-md mb-2'>
+      <p>  @{authorUsername}  </p>
       <img src={imageUrl} alt="" width={"300px"} />
       <p>  Caption {caption} </p>
-      <button> Lie </button>
+      {/* <p> Posted at  {date} </p> */}
+      <LikeButton isLiked={isLiked} likesCount={likesCount} setLikesCount={setLikesCount} postId={postId} />
+      <div className="comments">
+        <AddComment   />
+        <div className="comment">
+        </div>
+      </div>
     </div>
   )
 }

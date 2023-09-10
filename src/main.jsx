@@ -27,7 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             </Routes>
 
             <AuthRoute>
-                <Routes>
+                <Routes >
                     <Route path="/" element={<HomePage />} />
                     <Route path='/:username' element={<UserPage />} />
                 </Routes>

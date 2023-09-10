@@ -25,8 +25,7 @@ export default function Nav() {
   } 
 
 
-  const user = useSelector(state => state.user.username)
-  console.log(user)
+  const user = useSelector(state => state.user)
 
   function reverseTheme() {
 

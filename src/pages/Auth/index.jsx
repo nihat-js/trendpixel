@@ -35,7 +35,6 @@ export function AuthPage() {
         console.log(res)
         dispatch(login({ username :formData.username , token :  res.data.token}))
         navigate('/')
-        navigate(0)
       })
     }
     else if (activeForm === 'REGISTER') {
@@ -47,7 +46,6 @@ export function AuthPage() {
       }).then(res =>{
         dispatch(login({ username : formData.firstName , token : res.data.token}))
         navigate('/')
-        navigate(0)
         console.log(res)
       })
     }

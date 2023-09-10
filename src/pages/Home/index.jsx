@@ -9,10 +9,10 @@ export function HomePage() {
       <Nav />
       <div className="container flex mt-12">
         <div className="w-8/12">
-        <AddPost />
+        {/* <AddPost /> */}
         </div>
         <div className="w-4/12">
-        <SuggestionList />
+        {/* <SuggestionList /> */}
         </div>
       </div>
 

@@ -7,10 +7,10 @@ import { HomePage } from './pages/Home/'
 import { UserPage } from './pages/User'
 import { Provider } from 'react-redux'
 import { store } from './store/index'
+import { AuthRoute } from "./routes/AuthRoute"
 
 
-
-function checkAuth(){
+function checkAuth() {
 
 }
 
@@ -19,15 +19,21 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 
 
-    <Provider   store={store}>
+    <Provider store={store}>
         <BrowserRouter>
-            
+
             <Routes>
-                
-                <Route path="/" element={<HomePage />} />
                 <Route path="/accounts/auth" element={<AuthPage />} />
-                <Route path='/:username' element={<UserPage />} />
             </Routes>
+
+            <AuthRoute>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path='/:username' element={<UserPage />} />
+                </Routes>
+            </AuthRoute>
+
+
 
         </BrowserRouter>
     </Provider>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { client } from '../../consts'
-import { OnePost } from '../../components/Post/One'
+import { AddPost } from '../../components/Post/Add'
 import Nav from '../../components/Nav/index'
 export function UserPage() {
 

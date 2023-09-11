@@ -7,7 +7,6 @@ export const AuthRoute = ({ children }) => {
 
   const token = localStorage.token
   const username = localStorage.username
-
    dispatch(login({username,token}))
 
 

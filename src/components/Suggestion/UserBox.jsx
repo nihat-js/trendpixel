@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { client } from "../../consts";
-import { FollowButton } from "../Button/Follow";
+import { SubscribeButton} from "../Button/Subscribe.jsx";
 
 export default function UserBox({ avatar, username, status }) {
 
@@ -18,7 +18,7 @@ export default function UserBox({ avatar, username, status }) {
         <h3> {username} </h3>
       </div>
       <div className="actions">
-        <FollowButton isSubscribed={isSubscribed} />
+        <SubscribeButton isSubscribed={isSubscribed} />
       </div>
 
     </div>

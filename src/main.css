@@ -9,3 +9,8 @@ html{
   max-width: 1250px;
   margin:  0 auto;
 }
+@keyframes loading-animation {
+  100%{
+    transform: rotate(360deg);
+  }
+}

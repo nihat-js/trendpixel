@@ -1,22 +1,23 @@
 import React, {useEffect} from 'react';
 import "./index.scss"
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {setModalData} from "../../store/modalSlice.js";
 
 export function Modal( ) {
 
   let data = useSelector(state => state.modal)
-
+  const dispatch = useDispatch()
   let  {header, body, showModal,  showCloseButton = true , containerStyle } = data
+  console.log({showModal})
   function clickListener(e) {
-    if (e.target.classList.contains('modal')) {
-      setModalData({...data , showModal : false})
+    if (e.target.classList.contains('modal-wrapper')) {
+      dispatch(setModalData({...data , showModal : false}))
     }
   }
 
   function keyListener(e) {
     if (e.key === "Escape") {
-      setModalData({...data, showModal : false})
+      dispatch(setModalData({...data, showModal : false}))
     }
   }
 
@@ -35,9 +36,9 @@ export function Modal( ) {
     <div className="modal-wrapper" style={{display : showModal ? 'block' : 'none' }}>
       <div className="container" style={containerStyle}>
         <h2 className='title'> {header}   </h2>
-        {data.showCloseButton && <button className='btn-close' onClick={() => {
+        { <button className='btn-close' onClick={() => {
           setModalData({...data,showModal : false})
-        }}> &times; </button>}
+        }}> &times;  </button>}
         <div className="body">
           {body}
         </div>

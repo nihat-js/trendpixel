@@ -1,6 +1,6 @@
 .modal-wrapper{
   background-color: rgba(0,0,0,0.7);
-  position : absolute;
+  position : fixed;
   top : 0;
   left : 0;
   height: 100vh;
@@ -9,11 +9,15 @@
   align-items: center;
   z-index: 10;
   .container  {
-    position: relative;
+    position: absolute;
     width : 600px ;
     border-radius : 6px;
     padding : 20px 30px;
     background-color: #f9fafb;
+    left :50% ;
+    top : 50% ;
+    transform: translate(-50%,-50%);
+    overflow: hidden;
     .title {
       text-align :center ;
       font-size: 26px;

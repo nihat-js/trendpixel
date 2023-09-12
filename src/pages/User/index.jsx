@@ -5,7 +5,12 @@ import {PostBox} from '../../components/Post/Box'
 import Nav from '../../components/Nav/index'
 import {Avatar} from "../../components/Avatar/index.jsx";
 import {SubscribeButton} from "../../components/Button/Subscribe.jsx";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import likeSvg from "../../assets/like.svg"
+import likeFilledSvg from "../../assets/like-filled.svg"
+import commentsSvg from "../../assets/comments.svg"
+import {setModalData} from "../../store/modalSlice.js";
+import {PostModalBox} from "../../components/Post/ModalBox.jsx";
 
 export function UserPage() {
 
@@ -14,6 +19,8 @@ export function UserPage() {
   const [posts, setPosts] = useState([])
   let [loading, setLoading] = useState(false)
   let [isSubscribed, setSubscribed] = useState(false)
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     client.get('user?username=' + username).then(res => {
@@ -25,6 +32,14 @@ export function UserPage() {
   }, [])
 
   const detailsChildrenClass = "py-2 px-3 text-white bg-blue-600 rounded-md hover:bg-blue-800"
+
+  function handlePreviewClick(el) {
+    console.log('burdayam')
+    dispatch(setModalData({
+      showModal : true,
+      body: <PostModalBox {...el} />
+    }))
+  }
 
   return (
     <div className="user-page my-2">
@@ -49,10 +64,31 @@ export function UserPage() {
       </div>
 
 
-      {
-        posts.map((el, index) => <PostBox key={index} {...el} />
-        )
-      }
+      <div className="grid-posts grid gap-2 mt-3 " style={{gridTemplateColumns: 'repeat(3,1fr)'}}>
+        {
+          posts.map((el, index) => {
+            return <div className="preview-post relative" onClick={() =>handlePreviewClick(el)}>
+              <img src={el.imageUrl} className="w-full object-cover" height="100px"/>
+              <div className="stats flex gap-2 absolute left-1/2 top-1/2 -translate-x-1/2  -translate-y-1/2  ">
+
+                <div className="flex gap-1">
+                  <p> {el.likes.length} </p>
+                  <img src={likeSvg} className="w-4"/>
+                </div>
+                <div className="flex gap-1">
+                  <p> {el.comments.length} </p>
+                  <img src={commentsSvg} className="w-4"/></div>
+              </div>
+            </div>
+          })
+        }
+
+      </div>
+
+      {/*{*/}
+      {/*  posts.map((el, index) => <PostBox key={index} {...el} />*/}
+      {/*  )*/}
+      {/*}*/}
     </div>
   )
 }

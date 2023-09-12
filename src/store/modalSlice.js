@@ -11,6 +11,7 @@ const slice = createSlice({
   },
   reducers: {
     setModalData: (state, action) => {
+      console.log("testing",action.payload)
       return action.payload
     },
   },

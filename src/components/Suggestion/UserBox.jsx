@@ -18,7 +18,7 @@ export default function UserBox({ avatar, username, status }) {
         <h3> {username} </h3>
       </div>
       <div className="actions">
-        <SubscribeButton isSubscribed={isSubscribed} />
+        <SubscribeButton isSubscribed={false} />
       </div>
 
     </div>

@@ -8,6 +8,7 @@ import { UserPage } from './pages/User'
 import { Provider } from 'react-redux'
 import { store } from './store/index'
 import { AuthRoute } from "./routes/AuthRoute"
+import {UserLayout} from "./components/Layout/User.jsx";
 
 
 function checkAuth() {
@@ -28,8 +29,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
             <AuthRoute>
                 <Routes >
-                    <Route path="/" element={<HomePage />} />
-                    <Route path='/:username' element={<UserPage />} />
+                    <Route path="/" element={<UserLayout children={<HomePage/>}  />}  />
+                    <Route path='/:username' element={<UserLayout children={<UserPage/>} />} />
                 </Routes>
             </AuthRoute>
 

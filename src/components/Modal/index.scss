@@ -10,14 +10,14 @@
   z-index: 10;
   .container  {
     position: absolute;
-    width : 600px ;
-    border-radius : 6px;
-    padding : 20px 30px;
+    //max- : 800px ;
+    //border-radius : 6px;
+    //padding : 20px 30px;
     background-color: #f9fafb;
     left :50% ;
     top : 50% ;
     transform: translate(-50%,-50%);
-    overflow: hidden;
+    //overflow: hidden;
     .title {
       text-align :center ;
       font-size: 26px;

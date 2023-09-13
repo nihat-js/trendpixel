@@ -13,8 +13,7 @@ export function dateConvertor(timestamp, lang = "en") {
     if (date.getFullYear() === now.getFullYear()) {
         if (date.getMonth() === now.getMonth()) {
             if (date.getDate() === now.getDate()) {
-                console.log('burda')
-                return 'today at' + date.getHours() + ":" + date.getMinutes()
+                return 'today at ' + date.getHours() + ":" + date.getMinutes()
             } else if (date.getDay() - 1 === now.getDay()) {
                 return 'yesterday at' + date.getHours() + ":" + date.getMinutes()
             } else {

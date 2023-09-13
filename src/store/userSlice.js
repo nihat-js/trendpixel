@@ -11,13 +11,13 @@ const userSlice = createSlice({
   },
   reducers: {
     login: (state, action) => {
-      let { username, token } = action.payload
-      localStorage.setItem('token', token)
-      localStorage.setItem('username', username)
+      console.log(action.payload)
       return  { ...action.payload }
     },
     logout: (state, action) => {
       localStorage.removeItem('token')
+      localStorage.removeItem('username')
+      sessionStorage.clear()
       return { username : '' , token : '' }
     }
   },

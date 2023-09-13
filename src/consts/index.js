@@ -5,7 +5,7 @@ export const apiURL =  baseURL +  'api/v1/'
 const client = axios.create({
   baseURL : apiURL,
   headers : {
-    'Authorization' : 'Bearer ' + localStorage.token
+    'Authorization' : 'Bearer ' +  (localStorage.token || sessionStorage.token )
   }
 })
 

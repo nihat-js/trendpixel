@@ -26,7 +26,7 @@ export function SubscribeButton({ isloading : loading, username, isSubscribed })
       res = await client.delete('user/subscription?username=' + username)
     } else  {
       res = await client.post('user/subscription', { username })
-      console.log("30",res)
+      // console.log("30",res)
     }
     if (res?.data?.status === "success") {
       let msg = status ? "Unsubscribed successfully" : 'Subscribed successfully'

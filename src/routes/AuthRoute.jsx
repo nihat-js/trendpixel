@@ -8,6 +8,8 @@ export const AuthRoute = ({children}) => {
 
   const navigate = useNavigate()
 
+  
+
   useEffect(() => {
     const token = localStorage.token || sessionStorage.token
     const username = localStorage.username || sessionStorage.username

@@ -1,19 +1,22 @@
-import React, {useEffect, useState} from 'react'
-import {client} from "../../consts/index.js";
-import {useSelector} from "react-redux";
+import React, { useEffect, useState } from 'react'
+import { client } from "../../consts/index.js";
+import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
-
-export function SubscribeButton({username, isSubscribed}) {
+export function SubscribeButton({ isloading : loading, username, isSubscribed }) {
   let me = useSelector(state => state.user)
 
   let [status, setStatus] = useState(isSubscribed)
   // console.log("status in button", isSubscribed)
-  let [isLoading, setLoading] = useState(false)
+  let [isLoading, setLoading] = useState(loading)
   let [isHovering, setHover] = useState(false)
 
   useEffect(() => {
     setStatus(isSubscribed)
   }, [isSubscribed])
+
+  useEffect(()=>{
+    setLoading(loading)
+  },[loading])
 
   async function handleClick() {
     if (isLoading) return false
@@ -21,10 +24,10 @@ export function SubscribeButton({username, isSubscribed}) {
     let res
     if (status) {
       res = await client.delete('user/subscription?username=' + username)
-    } else {
-      res = await client.post('user/subscription', {username})
+    } else  {
+      res = await client.post('user/subscription', { username })
+      console.log("30",res)
     }
-    console.log(res)
     if (res?.data?.status === "success") {
       let msg = status ? "Unsubscribed successfully" : 'Subscribed successfully'
       toast.success(msg)
@@ -34,6 +37,7 @@ export function SubscribeButton({username, isSubscribed}) {
     }
     setLoading(false)
   }
+  
 
 
   const subscribeButton = (<button
@@ -54,10 +58,10 @@ export function SubscribeButton({username, isSubscribed}) {
     className="bg-green-700 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full inline-flex items-center">
     <span>  {isHovering ? "Unsubscribe" : "Subscribed"} </span>
     {!isHovering &&
-    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-         xmlns="http://www.w3.org/2000/svg">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-    </svg>
+      <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
+      </svg>
 
     }
   </button>)

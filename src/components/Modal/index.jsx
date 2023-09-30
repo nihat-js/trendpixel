@@ -9,7 +9,7 @@ export function Modal() {
 
   const dispatch = useDispatch()
   let {header, body, showModal, showCloseButton = true, containerStyle} = data
-  console.log({showModal})
+  // console.log({showModal})
 
   function clickListener(e) {
     if (e.target.classList.contains('modal-wrapper')) {
